@@ -1,36 +1,27 @@
 1-Faça um Programa que mostre a mensagem "Alo mundo" na tela.
 
-public class Main {
-
-public static void main(String[] args) {
- System.out.prinln("Alo, Mundo");
- }
- 
+public class App {
+    public static void main(String[] args) throws Exception {
+        System.out.println("Alo, Mundo!");
+    }
 }
 
 2-Faça um Programa que peça um número e então mostre a mensagem O número informado foi [número].
 
 import java.util.Scanner;
-
-public class Main {
-    public static void main (String[] args) {
+public class App {public static void main (String[] args) {
     Scanner ler = new Scanner(System.in);
     int n;
-
     System.out.println("informe o n");
     n = ler.nextInt();
-
-  System.out.println(n);
+    System.out.println(n);
    }
-
 }
 
 3-Faça um Programa que peça dois números e imprima a soma.
 
-import java.util.Scanner;
- 
+import java.util.Scanner; 
 class Main {
- 
    public static void main( String[] args ) {
       int a, b, c = 0;
       Scanner s = new Scanner( System.in );
@@ -40,7 +31,6 @@ class Main {
       c = a + b;
       System.out.println( "A soma de a e b é: " + c );
    }
- 
 }
 
 4-Faça um Programa que peça as 4 notas bimestrais e mostre a média.
