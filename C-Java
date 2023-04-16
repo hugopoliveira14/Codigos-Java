@@ -250,6 +250,67 @@ e. calcule os descontos e o salário líquido, conforme a tabela abaixo:
 = Salário Liquido : R$
 Obs.: Salário Bruto - Descontos = Salário Líquido.
 
+import java.util.Scanner;
+public class Main{
+
+ public static void mani(String[] args) {
+     float salario_bruto, ir, inss, sindicato;
+ System.out.println("Quanto ganha por hora? ");
+ float qnt_ganha = new Scanner(System.in).nextFloat();
+ System.out.println("Horas trabalhadas por mês: ");
+ float horas_trabalhadas =new Scanner(System.in).nextFloat();
+
+ salario_bruto = qnt_ganha * horas_trabalhadas;
+ ir = salario_bruto;
+ inss = salario_bruto;
+ sindicato = salario_bruto;
+
+ System.out.printf("+ Salário Bruto : R$ %.2f" + salario_bruto*0.05);
+ System.out.printf("- IR: R$ %.2f" + ir*0.11);
+ System.out.printf("- INSS: R$ %.2f" + inss*0.08);
+ System.out.printf("- Sindicato: R$ %.2f" + sindicato*0.05);
+ System.out.printf("= Salário Liquido : R$ %.2f" + (salario_bruto - ir - inss - sindicato));
+ }
+}
+
+OBS: NECESSÁRIO CORREÇÃO DO EXERCICIO.
+
+16-Faça um programa para uma loja de tintas. O programa deverá pedir o tamanho em metros quadrados da área a ser pintada. Considere que a cobertura da tinta é de 1
+litro para cada 3 metros quadrados e que a tinta é vendida em latas de 18 litros, que custam R$ 80,00. Informe ao usuário a quantidades de latas de tinta a serem 
+compradas e o preço total.
+
+import java.util.Scanner;
+public class Main{
+
+ public static void main(String[] args){
+System.out.println("Entre com o tamanho da área: ");
+
+litros = tamanho / 6;
+latas = litros / 18;
+
+if (latas % 18 != 0) {
+    latas += 1;
+preco = latas * 80;
+}
+
+System.out.printf(()"Apenas latas de 18 litros: %d" + latas), (preco:%d + preco);
+  }
+}
+
+OBS: NECESSÁRIO CORREÇÃO DO EXERCICIO.
+
+17- Faça um Programa para uma loja de tintas. O programa deverá pedir o tamanho em metros quadrados da área a ser pintada. Considere que a cobertura da tinta é de 1 litro para cada 6 metros quadrados e que a tinta é vendida em latas de 18 litros, que custam R$ 80,00 ou em galões de 3,6 litros, que custam R$ 25,00.
+Informe ao usuário as quantidades de tinta a serem compradas e os respectivos preços em 3 situações:
+º comprar apenas latas de 18 litros;
+º comprar apenas galões de 3,6 litros;
+º misturar latas e galões, de forma que o desperdício de tinta seja menor. Acrescente 10% de folga e sempre arredonde os valores para cima, isto é, considere latas
+cheias.
+
+
+
+
+
+
 
 
 
