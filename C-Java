@@ -177,6 +177,64 @@ public class Main {
 
 12- Tendo como dados de entrada a altura de uma pessoa, construa um algoritmo que calcule seu peso ideal, usando a seguinte fórmula: (72.7*altura) - 58
 
+import java.util.Scanner;
+public class Main{
+
+    public static void main(String[] args) {
+      Scanner entrada = new Scanner(System.in);
+      double Altura,PesoIdeal;
+      System.out.print("Digite sua altura (em metros): ");
+      Altura = entrada.nextDouble();
+      PesoIdeal = ( 72.7* Altura ) - 58;
+      System.out.println("Seu peso ideal é de: "+PesoIdeal+" kg.");
+    }
+}
+
+13- Tendo como dado de entrada a altura (h) de uma pessoa, construa um algoritmo que calcule seu peso ideal, utilizando as seguintes fórmulas:
+a- Para homens: (72.7*h) - 58
+b- Para mulheres: (62.1*h) - 44.7
+
+import java.util.Scanner;
+ public class Main{
+
+public static void main(String[] args) {
+      Scanner entrada = new Scanner(System.in);
+      double Altura,PesoIdeal;
+	    char Sexo='n';
+
+  		System.out.print("Digite sua altura (em metros): ");
+      Altura = entrada.nextDouble();
+
+      while(Sexo !='m' && Sexo !='M' && Sexo !='h' && Sexo !='H'){
+
+        System.out.print("Digite H ou M para especificar o sexo: "); // o/
+        Sexo = entrada.next(".").charAt(0);
+
+        switch(Sexo){
+          case 'h':
+          case 'H':
+            PesoIdeal = ( 72.7* Altura ) - 58;
+            System.out.println("Seu peso ideal é de: "+PesoIdeal+" kg.");
+            break;
+          case 'm':
+          case 'M':
+            PesoIdeal = ( 62.1 * Altura ) - 44.7;
+            System.out.println("Seu peso ideal é de: "+PesoIdeal+" kg.");
+            break;
+          default:
+            System.out.println("Não é M");
+        }
+
+      }
+	}
+}
+
+14- João Papo-de-Pescador, homem de bem, comprou um microcomputador para controlar o rendimento diário de seu trabalho. Toda vez que ele traz um peso de peixes maior 
+que o estabelecido pelo regulamento de pesca do estado de São Paulo (50 quilos) deve pagar uma multa de R$ 4,00 por quilo excedente. João precisa que você faça um
+programa que leia a variável peso (peso de peixes) e calcule o excesso. Gravar na variável excesso a quantidade de quilos além do limite e na variável multa o valor 
+da multa que João deverá pagar. Imprima os dados do programa com as mensagens adequadas.
+
+
 
 
 
