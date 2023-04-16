@@ -306,6 +306,47 @@ Informe ao usuário as quantidades de tinta a serem compradas e os respectivos p
 º misturar latas e galões, de forma que o desperdício de tinta seja menor. Acrescente 10% de folga e sempre arredonde os valores para cima, isto é, considere latas
 cheias.
 
+import java.util.Scanner;
+public class Main{
+
+ public static void main(String[] args){
+System.out.println("Entre com o tamanho da área: ");
+
+litros = tamanho / 6;
+latas = litros / 18;
+
+if (latas % 18 != 0) {
+    latas += 1;
+preco = latas * 80;
+}
+if (galoes = litros / 3.6) {
+ galoes % 3.6 != 0:
+    galoes += 1
+preco2 = galoes * 25
+}
+System.out.printf(()"Apenas latas de 18 litros: %d" + latas), (preco:%d + preco);
+System.out.printf(()"Apenas galões de 3.6 litros: %d" % galoes, (preço: %d'% preco2);
+  }
+}
+
+OBS: NECESSÁRIO CORREÇÃO DO EXERCICICO.
+
+18-Faça um programa que peça o tamanho de um arquivo para download (em MB) e a velocidade de um link de Internet (em Mbps), calcule e informe o tempo aproximado de
+download do arquivo usando este link (em minutos).
+
+import java.util.Scanner;
+public class Main{
+
+ public static void main(String[] args){
+
+
+ System.out.println("Tamanho do arquivo (MB):");
+ float tamanho= new Scanner(System.in).nextFloat();
+ System.out.println("Velocidade de Internet (MBps)");
+ float velocidade = new Scanner(System.in).nextFloat();
+ System.out.println("Tempo aproximado de download: " + (tamanho / velocidade) * 60);
+ }
+}
 
 
 
