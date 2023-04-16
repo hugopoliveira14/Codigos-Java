@@ -1,3 +1,5 @@
+                                                         EXERCICIO - ESTRUTURA SEQUENCIAL
+
 1-Faça um Programa que mostre a mensagem "Alo mundo" na tela.
 
 public class App {
@@ -73,5 +75,50 @@ public class Conversor {
  }
 
 }
+
+6-Faça um Programa que peça o raio de um círculo, calcule e mostre sua área.
+
+import java.util.Scanner;
+
+class Main {
+
+    public static void main(String[] args) {
+       System.out.println("Escreva o valor do raio");
+       Scanner scan = new Scanner(System.in);
+
+       double raio = scan.nextInt();
+       double area = Math.PI * raio * raio;
+
+       System.out.println("O valor da area é " + area);
+    }
+}
+
+7-Faça um Programa que calcule a área de um quadrado, em seguida mostre o dobro desta área para o usuário.
+
+import java.util.Scanner;
+
+public class Main {
+
+  public static void main(String[] args) {
+    System.out.println("Digite o valor da lateral do quadrado: ");
+    float lado = new Scanner(System.in).nextFloat();
+    System.out.println("O dobro da area do quadrado eh de: " + ((lado * lado) * 2) );
+  }
+}
+
+8-Faça um Programa que pergunte quanto você ganha por hora e o número de horas trabalhadas no mês. Calcule e mostre o total do seu salário no referido mês.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
