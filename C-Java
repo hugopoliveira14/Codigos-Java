@@ -17,7 +17,7 @@ public class App {public static void main (String[] args) {
     int n;
     System.out.println("informe o n");
     n = ler.nextInt();
-    System.out.println(n);
+    System.out.println("O número é:" + n);
    }
 }
 
