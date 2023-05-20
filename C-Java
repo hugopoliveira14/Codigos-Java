@@ -390,6 +390,28 @@ System.out.println("Parabéns, você atingiu a meta de hidratação diária");
  }
 }
 
+ORIENTAÇÃO A OBJETO:
+
+public class Aluno {
+   public String nome;
+   public String RA;
+
+   public double notaProgramacao;
+   public double notaModelagem;
+   public double notaVida;
+   public double notaCalculo;
+
+  public double calcularMedia() {
+     return (notaProgramacao+notaVida+
+             notaModelagem+notaCalculo) / 4;
+  }
+}
+
+Aluno aluno1 = new Aluno();
+aluno1.nome = 'Montanha';
+
+Aluno aluno2 = new Aluno();
+aluno2.nome = 'Raluca';
 
 
 
