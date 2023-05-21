@@ -1,5 +1,5 @@
 							 
-							 EXERCICIO - ESTRUTURA SEQUENCIAL
+						 EXERCICIO - ESTRUTURA SEQUENCIAL
 
 1-Faça um Programa que mostre a mensagem "Alo mundo" na tela.
 
@@ -374,7 +374,26 @@ public class Main{
      }
   }
   
-  2) Faça um Programa que peça um valor e mostre na tela se o valor é positivo ou negativo.
+  
+2) Faça um Programa que peça um valor e mostre na tela se o valor é positivo ou negativo.
+  
+import java.util.Scanner;
+
+public class Main{
+
+	public static void main(String[] args) {
+	Scanner ler = new Scanner(System.in);
+		int n1 = 0;
+	System.out.println("digite 1 número:");
+	n1 = ler.nextInt();
+	
+	if (n1 >= 0){
+	    System.out.println("o valor é positivo:" + n1);
+	}else{ 
+	    System.out.println("o valor é negativo:" + n1);
+	}
+     }
+  }
   
   -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -419,7 +438,9 @@ System.out.println("Parabéns, você atingiu a meta de hidratação diária");
  }
 }
 
-ORIENTAÇÃO A OBJETO:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                      ORIENTAÇÃO A OBJETO:
 
 public class Aluno {
    public String nome;
