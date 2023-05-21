@@ -349,7 +349,36 @@ public class Main{
  }
 }
 
-PROVA = A1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                               EXERCÍCIO - ESTRUTURA DE DECISÃO
+				    
+1) Faça um Programa que peça dois números e imprima o maior deles.
+
+import java.util.Scanner;
+
+public class Main{
+
+	public static void main(String[] args) {
+	Scanner ler = new Scanner(System.in);
+		int n1,n2 = 0;
+	System.out.println("digite 2 números:");
+	n1 = ler.nextInt();
+	n2 = ler.nextInt();
+	
+	if (n1>n2){
+	    System.out.println("maior valor é:" + n1);
+	}else{ 
+	    System.out.println("maior valor é:" + n2);
+	}
+     }
+  }
+  
+  2) Faça um Programa que peça um valor e mostre na tela se o valor é positivo ou negativo.
+  
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                      PROVA = A1
 
 
 import java.util.Scanner;
