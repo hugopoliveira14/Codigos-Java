@@ -27,40 +27,36 @@ OBS: NECESSÁRIO CORREÇÃO.
 
 2)
 
-public class BOLA {
 
-    private String cor;
-    double circunferencia;
-    String material;
+public class Bola {
 
-    BOLA(String cor) {
-        this.cor = cor;
-    }
+   private String cor;
+   double circunferencia;
+   String material;
 
-    void trocaCor(String novaCor){
-        cor = novaCor;
-    }
-
-    String mostraCor() {
-        return cor;
-
-    }
+   Bola(String cor){
+    this.cor = cor;
+  
 }
 
+   void trocaCor(String novaCor){
+     cor = novaCor;
+}
 
- public class App{
+   String mostraCor() {
+    return cor;
+   }
 
-    public static void main(String[]args) {
+public static void main(String[]args){
+        
+ Bola bola = new Bola("Vermelho");
  
- BOLA bola = new BOLA(cor:"Vermelho");
-
  System.out.println(bola.mostraCor());
-    
+
  }
 
 }
 
-OBS: NECESSÁRIO CORREÇÃO.
 
 
 
