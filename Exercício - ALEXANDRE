@@ -517,6 +517,7 @@ public class MaiorMenorNumero {
 import java.util.Scanner;
 
 public class CompraProduto {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -540,4 +541,48 @@ public class CompraProduto {
         }
     }
 }
+
+9) Faça um Programa que leia três números e mostre-os em ordem decrescente.
+
+
+import java.util.Scanner;
+
+public class NumerosDecrescentes {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Digite o primeiro número: ");
+        int numero1 = scanner.nextInt();
+        
+        System.out.print("Digite o segundo número: ");
+        int numero2 = scanner.nextInt();
+        
+        System.out.print("Digite o terceiro número: ");
+        int numero3 = scanner.nextInt();
+        
+        if (numero1 >= numero2 && numero1 >= numero3) {
+            if (numero2 >= numero3) {
+                System.out.println(numero1 + ", " + numero2 + ", " + numero3);
+            } else {
+                System.out.println(numero1 + ", " + numero3 + ", " + numero2);
+            }
+        } else if (numero2 >= numero1 && numero2 >= numero3) {
+            if (numero1 >= numero3) {
+                System.out.println(numero2 + ", " + numero1 + ", " + numero3);
+            } else {
+                System.out.println(numero2 + ", " + numero3 + ", " + numero1);
+            }
+        } else {
+            if (numero1 >= numero2) {
+                System.out.println(numero3 + ", " + numero1 + ", " + numero2);
+            } else {
+                System.out.println(numero3 + ", " + numero2 + ", " + numero1);
+            }
+        }
+    }
+}
+
+10) Faça um Programa que pergunte em que turno você estuda. Peça para digitar M-matutino ou V-Vespertino ou N- Noturno. Imprima a mensagem "Bom Dia!", "Boa Tarde!" ou "Boa Noite!" ou "Valor Inválido!", conforme o caso.
+
 
