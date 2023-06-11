@@ -1189,9 +1189,240 @@ public class OperacoesNumeros {
     }
 }
 
-25) 
+25) Faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+a. "Telefonou para a vítima?"
+b. "Esteve no local do crime?"
+c. "Mora perto da vítima?"
+d. "Devia para a vítima?"
+e. "Já trabalhou com a vítima?" O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
 
+import java.util.Scanner;
 
+public class ClassificacaoCrime {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Responda às perguntas abaixo sobre o crime:");
+        System.out.print("Telefonou para a vítima? (s/n): ");
+        String pergunta1 = scanner.nextLine();
+        System.out.print("Esteve no local do crime? (s/n): ");
+        String pergunta2 = scanner.nextLine();
+        System.out.print("Mora perto da vítima? (s/n): ");
+        String pergunta3 = scanner.nextLine();
+        System.out.print("Devia para a vítima? (s/n): ");
+        String pergunta4 = scanner.nextLine();
+        System.out.print("Já trabalhou com a vítima? (s/n): ");
+        String pergunta5 = scanner.nextLine();
+
+        int respostasPositivas = 0;
+
+        if (pergunta1.equalsIgnoreCase("s")) {
+            respostasPositivas++;
+        }
+        if (pergunta2.equalsIgnoreCase("s")) {
+            respostasPositivas++;
+        }
+        if (pergunta3.equalsIgnoreCase("s")) {
+            respostasPositivas++;
+        }
+        if (pergunta4.equalsIgnoreCase("s")) {
+            respostasPositivas++;
+        }
+        if (pergunta5.equalsIgnoreCase("s")) {
+            respostasPositivas++;
+        }
+
+        if (respostasPositivas == 2) {
+            System.out.println("Classificação: Suspeita");
+        } else if (respostasPositivas >= 3 && respostasPositivas <= 4) {
+            System.out.println("Classificação: Cúmplice");
+        } else if (respostasPositivas == 5) {
+            System.out.println("Classificação: Assassino");
+        } else {
+            System.out.println("Classificação: Inocente");
+        }
+    }
+}
+
+26) Um posto está vendendo combustíveis com a seguinte tabela de descontos:
+a. Álcool:
+b. até 20 litros, desconto de 3% por litro
+c. acima de 20 litros, desconto de 5% por litro
+d. Gasolina:
+e. até 20 litros, desconto de 4% por litro
+f. acima de 20 litros, desconto de 6% por litro Escreva um algoritmo que leia o número de litros vendidos, o tipo de combustível (codificado da seguinte forma: A-álcool, G-gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 2,50 o preço do litro do álcool é R$ 1,90.
+
+import java.util.Scanner;
+
+public class PostoCombustivel {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double precoGasolina = 2.50;
+        double precoAlcool = 1.90;
+
+        System.out.print("Digite o número de litros vendidos: ");
+        int litros = scanner.nextInt();
+
+        System.out.print("Digite o tipo de combustível (A-álcool, G-gasolina): ");
+        String tipoCombustivel = scanner.next();
+
+        double valorAPagar = 0.0;
+
+        if (tipoCombustivel.equalsIgnoreCase("A")) {
+            if (litros <= 20) {
+                valorAPagar = litros * (precoAlcool - (precoAlcool * 0.03));
+            } else {
+                valorAPagar = litros * (precoAlcool - (precoAlcool * 0.05));
+            }
+        } else if (tipoCombustivel.equalsIgnoreCase("G")) {
+            if (litros <= 20) {
+                valorAPagar = litros * (precoGasolina - (precoGasolina * 0.04));
+            } else {
+                valorAPagar = litros * (precoGasolina - (precoGasolina * 0.06));
+            }
+        }
+
+        System.out.println("Valor a ser pago: R$" + valorAPagar);
+    }
+}
+
+27) Uma fruteira está vendendo frutas com a seguinte tabela de preços:
+                      Até 5 Kg           Acima de 5 Kg
+Morango         R$ 2,50 por Kg          R$ 2,20 por Kg
+Maçã            R$ 1,80 por Kg          R$ 1,50 por Kg
+Se o cliente comprar mais de 8 Kg em frutas ou o valor total da compra ultrapassar R$ 25,00, receberá ainda um desconto de 10% sobre este total. Escreva um algoritmo para ler a quantidade (em Kg) de morangos e a quantidade (em Kg) de maças adquiridas e escreva o valor a ser pago pelo cliente.
+
+import java.util.Scanner;
+
+public class Fruteira {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite a quantidade de morangos (em Kg): ");
+        double morangosKg = input.nextDouble();
+
+        System.out.print("Digite a quantidade de maçãs (em Kg): ");
+        double macasKg = input.nextDouble();
+
+        double valorMorangos = calcularValorFruta(morangosKg, 2.50, 2.20);
+        double valorMacas = calcularValorFruta(macasKg, 1.80, 1.50);
+
+        double valorTotal = valorMorangos + valorMacas;
+
+        if (morangosKg + macasKg > 8 || valorTotal > 25.00) {
+            valorTotal -= valorTotal * 0.10; // Aplicando o desconto de 10%
+        }
+
+        System.out.println("Valor a ser pago: R$" + valorTotal);
+    }
+
+    public static double calcularValorFruta(double quantidade, double precoAteCincoKg, double precoAcimaCincoKg) {
+        if (quantidade <= 5) {
+            return quantidade * precoAteCincoKg;
+        } else {
+            return quantidade * precoAcimaCincoKg;
+        }
+    }
+}
+
+28) O Hipermercado Tabajara está com uma promoção de carnes que é imperdível. Confira:
+                      Até 5 Kg           Acima de 5 Kg
+File Duplo      R$ 4,90 por Kg          R$ 5,80 por Kg
+Alcatra         R$ 5,90 por Kg          R$ 6,80 por Kg
+Picanha         R$ 6,90 por Kg          R$ 7,80 por Kg
+Para atender a todos os clientes, cada cliente poderá levar apenas um dos tipos de carne da promoção, porém não há limites para a quantidade de carne por cliente. Se compra for feita no cartão Tabajara o cliente receberá ainda um desconto de 5% sobre o total da compra. Escreva um programa que peça o tipo e a quantidade de carne comprada pelo usuário e gere um cupom fiscal, contendo as informações da compra: tipo e quantidade de carne, preço total, tipo de pagamento, valor do desconto e valor a pagar.
+
+import java.util.Scanner;
+
+public class HipermercadoTabajara {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Bem-vindo ao Hipermercado Tabajara!");
+        System.out.println("Tipos de carne disponíveis na promoção:");
+        System.out.println("1. File Duplo");
+        System.out.println("2. Alcatra");
+        System.out.println("3. Picanha");
+
+        System.out.print("Digite o número correspondente ao tipo de carne escolhido: ");
+        int tipoCarne = input.nextInt();
+
+        System.out.print("Digite a quantidade de carne em quilogramas: ");
+        double quantidade = input.nextDouble();
+
+        double precoTotal = calcularPrecoTotal(tipoCarne, quantidade);
+        boolean cartaoTabajara = false;
+        double desconto = 0.0;
+
+        System.out.print("Deseja realizar o pagamento com o cartão Tabajara? (S/N): ");
+        String opcaoCartao = input.next();
+
+        if (opcaoCartao.equalsIgnoreCase("S")) {
+            cartaoTabajara = true;
+            desconto = precoTotal * 0.05;
+            precoTotal -= desconto;
+        }
+
+        System.out.println("Cupom Fiscal");
+        System.out.println("Tipo de carne: " + obterDescricaoCarne(tipoCarne));
+        System.out.println("Quantidade: " + quantidade + " Kg");
+        System.out.println("Preço total: R$" + precoTotal);
+        System.out.println("Tipo de pagamento: " + (cartaoTabajara ? "Cartão Tabajara" : "Outro"));
+        System.out.println("Valor do desconto: R$" + desconto);
+        System.out.println("Valor a pagar: R$" + precoTotal);
+    }
+
+    public static double calcularPrecoTotal(int tipoCarne, double quantidade) {
+        double precoKg = 0.0;
+
+        switch (tipoCarne) {
+            case 1: // File Duplo
+                if (quantidade <= 5) {
+                    precoKg = 4.90;
+                } else {
+                    precoKg = 5.80;
+                }
+                break;
+            case 2: // Alcatra
+                if (quantidade <= 5) {
+                    precoKg = 5.90;
+                } else {
+                    precoKg = 6.80;
+                }
+                break;
+            case 3: // Picanha
+                if (quantidade <= 5) {
+                    precoKg = 6.90;
+                } else {
+                    precoKg = 7.80;
+                }
+                break;
+            default:
+                System.out.println("Opção inválida.");
+                break;
+        }
+
+        return precoKg * quantidade;
+    }
+
+    public static String obterDescricaoCarne(int tipoCarne) {
+        switch (tipoCarne) {
+            case 1:
+                return "File Duplo";
+            case 2:
+                return "Alcatra";
+            case 3:
+                return "Picanha";
+            default:
+                return "";
+        }
+    }
+}
 
 
 
