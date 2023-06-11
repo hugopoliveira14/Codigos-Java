@@ -2332,6 +2332,157 @@ public class Main {
     }
 }
 
-17)
+17) Crie uma Fazenda de Bichinhos instanciando vários objetos bichinho e mantendo o controle deles através de uma lista. 
+Imite o funcionamento do programa básico, mas ao invés de exigis que o usuário tome conta de um único bichinho, exija que ele tome conta da fazenda inteira. Cada opção do menu deveria permitir que o usuário executasse uma ação para todos os bichinhos (alimentar todos os bichinhos, brincar com todos os bichinhos, ou ouvir a todos os bichinhos). 
+Para tornar o programa mais interessante, dê para cada bichinho um nivel inicial aleatório de fome e tédio.
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+
+class BichinhoVirtual {
+    private String nome;
+    private int fome;
+    private int tedio;
+
+    public BichinhoVirtual(String nome, int fome, int tedio) {
+        this.nome = nome;
+        this.fome = fome;
+        this.tedio = tedio;
+    }
+
+    public void alimentar() {
+        fome -= 10;
+        if (fome < 0) {
+            fome = 0;
+        }
+    }
+
+    public void brincar() {
+        tedio -= 10;
+        if (tedio < 0) {
+            tedio = 0;
+        }
+    }
+
+    public void ouvir() {
+        System.out.println("Bichinho " + nome + " diz: Estou bem!");
+    }
+
+    public void passarTempo(int horas) {
+        fome += horas * 5;
+        if (fome > 100) {
+            fome = 100;
+        }
+        tedio += horas * 10;
+        if (tedio > 100) {
+            tedio = 100;
+        }
+    }
+
+    public void exibirStatus() {
+        System.out.println("Bichinho: " + nome);
+        System.out.println("Nível de Fome: " + fome);
+        System.out.println("Nível de Tédio: " + tedio);
+        System.out.println();
+    }
+}
+
+public class FazendaDeBichinhos {
+    private List<BichinhoVirtual> bichinhos;
+
+    public FazendaDeBichinhos() {
+        bichinhos = new ArrayList<>();
+    }
+
+    public void adicionarBichinho(BichinhoVirtual bichinho) {
+        bichinhos.add(bichinho);
+    }
+
+    public void alimentarBichinhos() {
+        for (BichinhoVirtual bichinho : bichinhos) {
+            bichinho.alimentar();
+        }
+    }
+
+    public void brincarComBichinhos() {
+        for (BichinhoVirtual bichinho : bichinhos) {
+            bichinho.brincar();
+        }
+    }
+
+    public void ouvirBichinhos() {
+        for (BichinhoVirtual bichinho : bichinhos) {
+            bichinho.ouvir();
+        }
+    }
+
+    public void passarTempo(int horas) {
+        for (BichinhoVirtual bichinho : bichinhos) {
+            bichinho.passarTempo(horas);
+        }
+    }
+
+    public void exibirStatusBichinhos() {
+        for (BichinhoVirtual bichinho : bichinhos) {
+            bichinho.exibirStatus();
+        }
+    }
+
+    public static void main(String[] args) {
+        FazendaDeBichinhos fazenda = new FazendaDeBichinhos();
+        Random random = new Random();
+
+        fazenda.adicionarBichinho(new BichinhoVirtual("Bichinho 1", random.nextInt(50), random.nextInt(50)));
+        fazenda.adicionarBichinho(new BichinhoVirtual("Bichinho 2", random.nextInt(50), random.nextInt(50)));
+        fazenda.adicionarBichinho(new BichinhoVirtual("Bichinho 3", random.nextInt(50), random.nextInt(50)));
+
+        Scanner scanner = new Scanner(System.in);
+
+        int opcao;
+        do {
+            System.out.println("=== Fazenda de Bichinhos ===");
+            System.out.println("1. Alimentar todos os bichinhos");
+            System.out.println("2. Brincar com todos os bichinhos");
+            System.out.println("3. Ouvir todos os bichinhos");
+            System.out.println("4. Passar tempo na fazenda");
+            System.out.println("5. Exibir status de todos os bichinhos");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    fazenda.alimentarBichinhos();
+                    System.out.println("Todos os bichinhos foram alimentados!");
+                    break;
+                case 2:
+                    fazenda.brincarComBichinhos();
+                    System.out.println("Todos os bichinhos brincaram!");
+                    break;
+                case 3:
+                    fazenda.ouvirBichinhos();
+                    break;
+                case 4:
+                    System.out.print("Digite o número de horas: ");
+                    int horas = scanner.nextInt();
+                    fazenda.passarTempo(horas);
+                    System.out.println("Tempo passado na fazenda: " + horas + " horas");
+                    break;
+                case 5:
+                    fazenda.exibirStatusBichinhos();
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+
+            System.out.println();
+        } while (opcao != 0);
+    }
+}
 
 
