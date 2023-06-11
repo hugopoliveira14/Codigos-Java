@@ -877,4 +877,322 @@ public class CalculoRaizesEquacao {
     }
 }
 
+17) Faça um Programa que peça um número correspondente a um determinado ano e em seguida informe se este ano é ou não bissexto.
+
+import java.util.Scanner;
+
+public class VerificacaoAnoBissexto {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um ano: ");
+        int ano = scanner.nextInt();
+
+        if (verificarAnoBissexto(ano)) {
+            System.out.println(ano + " é um ano bissexto.");
+        } else {
+            System.out.println(ano + " não é um ano bissexto.");
+        }
+    }
+
+    public static boolean verificarAnoBissexto(int ano) {
+        if ((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0) {
+            return true;
+        }
+        return false;
+    }
+}
+
+18) Faça um Programa que peça uma data no formato dd/mm/aaaa e determine se a mesma é uma data válida.
+
+import java.util.Scanner;
+
+public class VerificacaoData {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite uma data no formato dd/mm/aaaa: ");
+        String data = scanner.nextLine();
+
+        if (verificarDataValida(data)) {
+            System.out.println("A data " + data + " é válida.");
+        } else {
+            System.out.println("A data " + data + " não é válida.");
+        }
+    }
+
+    public static boolean verificarDataValida(String data) {
+        String[] partes = data.split("/");
+
+        if (partes.length != 3) {
+            return false;
+        }
+
+        int dia, mes, ano;
+
+        try {
+            dia = Integer.parseInt(partes[0]);
+            mes = Integer.parseInt(partes[1]);
+            ano = Integer.parseInt(partes[2]);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1) {
+            return false;
+        }
+
+        boolean bissexto = (ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0;
+
+        if (mes == 2) {
+            if (bissexto) {
+                return dia <= 29;
+            } else {
+                return dia <= 28;
+            }
+        } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+            return dia <= 30;
+        } else {
+            return true;
+        }
+    }
+}
+
+19) Faça um Programa que leia um número inteiro menor que 1000 e imprima a quantidade de centenas, dezenas e unidades do mesmo.
+Observando os termos no plural a colocação do "e", da vírgula entre outros. Exemplo:
+326 = 3 centenas, 2 dezenas e 6 unidades
+12 = 1 dezena e 2 unidades Testar com: 326, 300, 100, 320, 310,305, 301, 101, 311, 111, 25, 20, 10, 21, 11, 1, 7 e 16
+
+import java.util.Scanner;
+
+public class DecomposicaoNumerica {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número inteiro menor que 1000: ");
+        int numero = scanner.nextInt();
+
+        if (numero < 0 || numero >= 1000) {
+            System.out.println("Número inválido. Digite um número inteiro menor que 1000.");
+            return;
+        }
+
+        int centenas = numero / 100;
+        int dezenas = (numero % 100) / 10;
+        int unidades = (numero % 100) % 10;
+
+        String resultado = "";
+
+        if (centenas > 0) {
+            resultado += centenas + " centena" + (centenas > 1 ? "s" : "");
+        }
+
+        if (dezenas > 0) {
+            if (centenas > 0) {
+                resultado += ", ";
+            }
+            resultado += dezenas + " dezena" + (dezenas > 1 ? "s" : "");
+        }
+
+        if (unidades > 0) {
+            if (centenas > 0 || dezenas > 0) {
+                resultado += " e ";
+            }
+            resultado += unidades + " unidade" + (unidades > 1 ? "s" : "");
+        }
+
+        System.out.println(resultado);
+    }
+}
+
+20) Faça um Programa para leitura de três notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e presentar:
+a. A mensagem "Aprovado", se a média for maior ou igual a 7, com a respectiva média alcançada;
+b. A mensagem "Reprovado", se a média for menor do que 7, com a respectiva média alcançada;
+c. A mensagem "Aprovado com Distinção", se a média for igual a 10.
+
+import java.util.Scanner;
+
+public class MediaAluno {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite as três notas parciais do aluno:");
+        double nota1 = scanner.nextDouble();
+        double nota2 = scanner.nextDouble();
+        double nota3 = scanner.nextDouble();
+
+        double media = (nota1 + nota2 + nota3) / 3;
+
+        System.out.println("Média alcançada: " + media);
+
+        if (media == 10) {
+            System.out.println("Aprovado com Distinção");
+        } else if (media >= 7) {
+            System.out.println("Aprovado");
+        } else {
+            System.out.println("Reprovado");
+        }
+    }
+}
+
+21) Faça um Programa para um caixa eletrônico. O programa deverá perguntar ao usuário a valor do saque e depois informar quantas notas de cada valor serão fornecidas. 
+As notas disponíveis serão as de 1, 5, 10, 50 e 100 reais. O valor mínimo é de 10 reais e o máximo de 600 reais. O programa não deve se preocupar com a quantidade de notas existentes na máquina.
+a. Exemplo 1: Para sacar a quantia de 256 reais, o programa fornece duas notas de 100, uma nota de 50, uma nota de 5 e uma nota de 1;
+b. Exemplo 2: Para sacar a quantia de 399 reais, o programa fornece três notas de 100, uma nota de 50, quatro notas de 10, uma nota de 5 e quatro notas de 1.
+
+import java.util.Scanner;
+
+public class CaixaEletronico {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o valor do saque (entre 10 e 600 reais): ");
+        int valorSaque = scanner.nextInt();
+
+        if (valorSaque < 10 || valorSaque > 600) {
+            System.out.println("Valor inválido. O valor do saque deve ser entre 10 e 600 reais.");
+            return;
+        }
+
+        int notas100 = valorSaque / 100;
+        int notas50 = (valorSaque % 100) / 50;
+        int notas10 = ((valorSaque % 100) % 50) / 10;
+        int notas5 = (((valorSaque % 100) % 50) % 10) / 5;
+        int notas1 = (((valorSaque % 100) % 50) % 10) % 5;
+
+        System.out.println("Notas fornecidas:");
+        System.out.println("R$100: " + notas100);
+        System.out.println("R$50 : " + notas50);
+        System.out.println("R$10 : " + notas10);
+        System.out.println("R$5  : " + notas5);
+        System.out.println("R$1  : " + notas1);
+    }
+}
+
+22) Faça um Programa que peça um número inteiro e determine se ele é par ou impar. Dica: utilize o operador módulo (resto da divisão).
+
+import java.util.Scanner;
+
+public class ParOuImpar {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número inteiro: ");
+        int numero = scanner.nextInt();
+
+        if (numero % 2 == 0) {
+            System.out.println("O número " + numero + " é par.");
+        } else {
+            System.out.println("O número " + numero + " é ímpar.");
+        }
+    }
+}
+
+23) Faça um Programa que peça um número e informe se o número é inteiro ou decimal. Dica: utilize uma função de arredondamento.
+
+import java.util.Scanner;
+
+public class InteiroOuDecimal {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite um número: ");
+        double numero = scanner.nextDouble();
+
+        if (numero == Math.floor(numero) || numero == Math.ceil(numero)) {
+            System.out.println("O número é inteiro.");
+        } else {
+            System.out.println("O número é decimal.");
+        }
+    }
+}
+
+24) Faça um Programa que leia 2 números e em seguida pergunte ao usuário qual operação ele deseja realizar. O resultado da operação deve ser acompanhado de uma frase que diga se o número é:
+a. par ou ímpar;
+b. positivo ou negativo;
+c. inteiro ou decimal.
+
+import java.util.Scanner;
+
+public class OperacoesNumeros {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o primeiro número: ");
+        double numero1 = scanner.nextDouble();
+
+        System.out.print("Digite o segundo número: ");
+        double numero2 = scanner.nextDouble();
+
+        System.out.println("Escolha a operação a ser realizada:");
+        System.out.println("1 - Soma");
+        System.out.println("2 - Subtração");
+        System.out.println("3 - Multiplicação");
+        System.out.println("4 - Divisão");
+
+        System.out.print("Digite o número da operação desejada: ");
+        int operacao = scanner.nextInt();
+
+        double resultado = 0;
+
+        switch (operacao) {
+            case 1:
+                resultado = numero1 + numero2;
+                System.out.println("Resultado da soma: " + resultado);
+                break;
+            case 2:
+                resultado = numero1 - numero2;
+                System.out.println("Resultado da subtração: " + resultado);
+                break;
+            case 3:
+                resultado = numero1 * numero2;
+                System.out.println("Resultado da multiplicação: " + resultado);
+                break;
+            case 4:
+                if (numero2 != 0) {
+                    resultado = numero1 / numero2;
+                    System.out.println("Resultado da divisão: " + resultado);
+                } else {
+                    System.out.println("Divisão por zero não é permitida.");
+                }
+                break;
+            default:
+                System.out.println("Operação inválida.");
+                break;
+        }
+
+        if (resultado % 2 == 0) {
+            System.out.println("O resultado é par.");
+        } else {
+            System.out.println("O resultado é ímpar.");
+        }
+
+        if (resultado >= 0) {
+            System.out.println("O resultado é positivo.");
+        } else {
+            System.out.println("O resultado é negativo.");
+        }
+
+        if (resultado == Math.floor(resultado) || resultado == Math.ceil(resultado)) {
+            System.out.println("O resultado é inteiro.");
+        } else {
+            System.out.println("O resultado é decimal.");
+        }
+    }
+}
+
+25) 
+
+
+
+
+
 
