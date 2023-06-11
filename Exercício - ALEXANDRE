@@ -2098,13 +2098,240 @@ public class Main {
     }
 }
 
+13) Classe Funcionário: Implemente a classe Funcionário. Um empregado tem um nome (um string) e um salário(um double). Escreva um construtor com dois parâmetros (nome e salário) e métodos para devolver nome e salário. Escreva um pequeno programa que teste sua classe.
 
+class Funcionario {
+    private String nome;
+    private double salario;
 
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
 
+    public String getNome() {
+        return nome;
+    }
 
+    public double getSalario() {
+        return salario;
+    }
+}
 
+public class Main {
+    public static void main(String[] args) {
+        Funcionario funcionario = new Funcionario("João", 2500.00);
 
+        System.out.println("Nome do funcionário: " + funcionario.getNome());
+        System.out.println("Salário do funcionário: R$" + funcionario.getSalario());
+    }
+}
 
+14) Aprimore a classe do exercício anterior para adicionar o método aumentarSalario (porcentualDeAumento) que aumente o salário do funcionário em uma certa porcentagem.
+  harry=funcionário("Harry",25000)
+  harry.aumentarSalario(10)
 
+class Funcionario {
+    private String nome;
+    private double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void aumentarSalario(double porcentualDeAumento) {
+        double aumento = salario * (porcentualDeAumento / 100);
+        salario += aumento;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Funcionario funcionario = new Funcionario("João", 2500.00);
+
+        System.out.println("Nome do funcionário: " + funcionario.getNome());
+        System.out.println("Salário do funcionário: R$" + funcionario.getSalario());
+
+        funcionario.aumentarSalario(10); // Aumenta o salário em 10%
+
+        System.out.println("Novo salário do funcionário: R$" + funcionario.getSalario());
+    }
+}
+
+15) Classe Bichinho Virtual++: Melhore o programa do bichinho virtual, permitindo que o usuário especifique quanto de comida ele fornece ao bichinho e por quanto tempo ele brinca com o bichinho. 
+Faça com que estes valores afetem quão rapidamente os níveis de fome e tédio caem.
+
+class BichinhoVirtual {
+    private String nome;
+    private int fome;
+    private int tedio;
+
+    public BichinhoVirtual(String nome) {
+        this.nome = nome;
+        this.fome = 50;
+        this.tedio = 50;
+    }
+
+    public void alimentar(int quantidadeComida) {
+        fome -= quantidadeComida;
+        if (fome < 0) {
+            fome = 0;
+        }
+    }
+
+    public void brincar(int tempoBrincadeira) {
+        tedio -= tempoBrincadeira;
+        if (tedio < 0) {
+            tedio = 0;
+        }
+    }
+
+    public void passarTempo(int horas) {
+        fome += horas * 5;
+        if (fome > 100) {
+            fome = 100;
+        }
+        tedio += horas * 10;
+        if (tedio > 100) {
+            tedio = 100;
+        }
+    }
+
+    public void exibirStatus() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Nível de Fome: " + fome);
+        System.out.println("Nível de Tédio: " + tedio);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BichinhoVirtual bichinho = new BichinhoVirtual("Bob");
+
+        bichinho.alimentar(30); // Fornece 30 unidades de comida
+        bichinho.brincar(20); // Brinca por 20 minutos
+
+        bichinho.passarTempo(3); // Simula a passagem de 3 horas
+
+        bichinho.exibirStatus();
+    }
+}
+
+16) Crie uma "porta escondida" no programa do programa do bichinho virtual que mostre os valores exatos dos atributos do objeto. 
+Consiga isto mostrando o objeto quando uma opção secreta, não listada no menu, for informada na escolha do usuário. Dica: acrescente um método especial str() à classe Bichinho.
+
+import java.util.Scanner;
+
+class BichinhoVirtual {
+    private String nome;
+    private int fome;
+    private int tedio;
+
+    public BichinhoVirtual(String nome) {
+        this.nome = nome;
+        this.fome = 50;
+        this.tedio = 50;
+    }
+
+    public void alimentar(int quantidadeComida) {
+        fome -= quantidadeComida;
+        if (fome < 0) {
+            fome = 0;
+        }
+    }
+
+    public void brincar(int tempoBrincadeira) {
+        tedio -= tempoBrincadeira;
+        if (tedio < 0) {
+            tedio = 0;
+        }
+    }
+
+    public void passarTempo(int horas) {
+        fome += horas * 5;
+        if (fome > 100) {
+            fome = 100;
+        }
+        tedio += horas * 10;
+        if (tedio > 100) {
+            tedio = 100;
+        }
+    }
+
+    public void exibirStatus() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Nível de Fome: " + fome);
+        System.out.println("Nível de Tédio: " + tedio);
+    }
+
+    public String toString() {
+        return "Nome: " + nome + "\nNível de Fome: " + fome + "\nNível de Tédio: " + tedio;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BichinhoVirtual bichinho = new BichinhoVirtual("Bob");
+
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            exibirMenu();
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite a quantidade de comida fornecida: ");
+                    int quantidadeComida = scanner.nextInt();
+                    bichinho.alimentar(quantidadeComida);
+                    break;
+                case 2:
+                    System.out.println("Digite o tempo de brincadeira: ");
+                    int tempoBrincadeira = scanner.nextInt();
+                    bichinho.brincar(tempoBrincadeira);
+                    break;
+                case 3:
+                    System.out.println("Digite o tempo decorrido em horas: ");
+                    int horas = scanner.nextInt();
+                    bichinho.passarTempo(horas);
+                    break;
+                case 9:
+                    System.out.println(bichinho.toString());
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+
+            System.out.println();
+
+        } while (opcao != 0);
+
+        System.out.println("Programa encerrado.");
+        scanner.close();
+    }
+
+    public static void exibirMenu() {
+        System.out.println("Menu:");
+        System.out.println("1 - Alimentar o bichinho");
+        System.out.println("2 - Brincar com o bichinho");
+        System.out.println("3 - Passar tempo");
+        System.out.println("9 - Exibir valores exatos do objeto (opção secreta)");
+        System.out.println("0 - Sair");
+        System.out.println("Digite a opção desejada: ");
+    }
+}
+
+17)
 
 
